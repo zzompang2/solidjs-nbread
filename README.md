@@ -1,30 +1,9 @@
-# SolidStart
+# 엔빵2 (N Bread2)
 
-Everything you need to build a Solid project, powered by [`solid-start`](https://start.solidjs.com);
+여러 명이 나눠서 결제해서 정산하기 머리아프신가요?
+복잡한 정산 내역을 깔끔하게 정리해주는 "엔빵"을 사용해보세요!
 
-## Creating a project
+## 제작 과정
 
-```bash
-# create a new project in the current directory
-npm init solid@latest
-
-# create a new project in my-app
-npm init solid@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-Solid apps are built with _adapters_, which optimise your project for deployment to different environments.
-
-By default, `npm run build` will generate a Node app that you can run with `npm start`. To use a different adapter, add it to the `devDependencies` in `package.json` and specify in your `vite.config.js`.
+2023.12.24 ~ 현재: 제작중
+Solid.js 사용
