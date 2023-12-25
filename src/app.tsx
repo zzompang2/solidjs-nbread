@@ -1,18 +1,33 @@
 // @refresh reload
-import { createSignal } from "solid-js";
+import { For, Show, createSignal } from "solid-js";
 import "./app.css";
 
 export default function App() {
-  const [members, setMembers] = createSignal(Array<any>());
+  const [members, setMembers] = createSignal(Array<string>());
+  const [alert, setAlert] = createSignal({ show: false, message: "" });
   let inputRef: HTMLInputElement;
+  let alertTimer: NodeJS.Timeout;
 
   const handleAddMember = (e: Event) => {
     e.preventDefault(); // prevent refresh
 
     const trimedName = inputRef.value.trim();
-    inputRef.value = "";
 
+    // empty
     if (trimedName === "") return;
+
+    // duplicate
+    if (members().indexOf(trimedName) !== -1) {
+      setAlert({ show: true, message: "중복된 이름입니다." });
+      clearTimeout(alertTimer);
+      alertTimer = setTimeout(
+        () => setAlert({ ...alert(), show: false }),
+        2000
+      );
+      return;
+    }
+
+    inputRef.value = "";
     setMembers([...members(), trimedName]);
   };
 
@@ -29,16 +44,19 @@ export default function App() {
         <button type="submit">추가</button>
       </form>
       <p>엔터키로 빠르게 추가할 수 있어요!</p>
-      <div>
-        {members().map((mem, i) => (
+      <For each={members()}>
+        {(mem, i) => (
           <div>
             <span>
-              {i + 1}. {mem}
+              {i() + 1}. {mem}
             </span>
-            <button onclick={() => handleDeleteMember(i)}>삭제</button>
+            <button onclick={() => handleDeleteMember(i())}>삭제</button>
           </div>
-        ))}
-      </div>
+        )}
+      </For>
+      <Show when={alert().show}>
+        <div class="alert">{alert().message}</div>
+      </Show>
     </main>
   );
 }
