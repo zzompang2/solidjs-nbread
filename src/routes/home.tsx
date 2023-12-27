@@ -9,6 +9,12 @@ export default function Home() {
   let inputRef: HTMLInputElement;
   let alertTimer: NodeJS.Timeout;
 
+  const popupAlert = (message: string) => {
+    setAlert({ show: true, message });
+    clearTimeout(alertTimer);
+    alertTimer = setTimeout(() => setAlert({ ...alert(), show: false }), 2000);
+  };
+
   const handleAddMember = (e: Event) => {
     e.preventDefault(); // prevent refresh
 
@@ -19,12 +25,7 @@ export default function Home() {
 
     // duplicate
     if (members().indexOf(trimedName) !== -1) {
-      setAlert({ show: true, message: "중복된 이름입니다." });
-      clearTimeout(alertTimer);
-      alertTimer = setTimeout(
-        () => setAlert({ ...alert(), show: false }),
-        2000
-      );
+      popupAlert("중복된 이름입니다.");
       return;
     }
 
@@ -55,7 +56,12 @@ export default function Home() {
           </div>
         )}
       </For>
-      <button onclick={() => navigate("/calculation", { state: members() })}>
+      <button
+        onclick={() => {
+          if (members().length < 2) popupAlert("2명 이상이어야 해요.");
+          else navigate("/calculation", { state: members() });
+        }}
+      >
         다음
       </button>
       <Show when={alert().show}>
