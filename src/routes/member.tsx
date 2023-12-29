@@ -1,6 +1,6 @@
 // @refresh reload
 import { For, Show, createSignal } from "solid-js";
-import { DATA } from "~/systems/data";
+import { memberList } from "~/systems/data";
 
 export default function Member() {
   const [alert, setAlert] = createSignal({ show: false, message: "" });
@@ -22,38 +22,36 @@ export default function Member() {
     if (trimedName === "") return;
 
     // duplicate
-    if (DATA.memberList.exist(trimedName)) {
+    if (memberList.exist(trimedName)) {
       popupAlert("중복된 이름입니다.");
       return;
     }
 
     inputRef.value = "";
-    DATA.memberList.add(trimedName);
+    memberList.add(trimedName);
   };
 
   return (
     <main>
-      <div>{DATA.memberList.count}명</div>
+      <div>{memberList.count}명</div>
       <form onSubmit={handleAddMember}>
         <input type="text" ref={(ref) => (inputRef = ref)} placeholder="이름" />
         <button type="submit">추가</button>
       </form>
       <p>엔터키로 빠르게 추가할 수 있어요!</p>
-      <For each={DATA.memberList.list}>
+      <For each={memberList.list}>
         {(member) => (
           <div>
             <span>
               {member.id}. {member.name}
             </span>
-            <button onclick={() => DATA.memberList.delete(member.id)}>
-              삭제
-            </button>
+            <button onclick={() => memberList.delete(member.id)}>삭제</button>
           </div>
         )}
       </For>
       <button
         onclick={() => {
-          if (DATA.memberList.count < 2) popupAlert("2명 이상이어야 해요.");
+          if (memberList.count < 2) popupAlert("2명 이상이어야 해요.");
         }}
       >
         다음

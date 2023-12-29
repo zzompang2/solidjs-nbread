@@ -1,25 +1,43 @@
-import { Accessor, Setter, createSignal } from "solid-js";
+import { SetStoreFunction, createStore } from "solid-js/store";
 
-class List<T> {
-  id = 0;
-  _list: Accessor<T[]>;
-  set: Setter<T[]>;
+/**
+ * List
+ */
 
+interface List<T> {
+  id: number;
+  _list: T[];
+  set: SetStoreFunction<T[]>;
+}
+
+interface hasId {
+  id: number;
+}
+
+class List<T extends hasId> {
   constructor() {
-    [this._list, this.set] = createSignal(Array<T>());
+    [this._list, this.set] = createStore(Array<T>());
+    this.id = 0;
   }
 
   get list() {
-    return this._list();
+    return this._list;
   }
 
   get count(): number {
     return this.list.length;
   }
+
+  delete(id: number) {
+    this.set((list) => list.filter((elem) => elem.id !== id));
+  }
 }
 
-interface Member {
-  id: number;
+/**
+ * Member
+ */
+
+interface Member extends hasId {
   name: string;
 }
 
@@ -31,30 +49,35 @@ class MemberList extends List<Member> {
   add(name: string) {
     this.set((list) => [...list, { id: ++this.id, name }]);
   }
-
-  delete(id: number) {
-    this.set((list) => list.filter((m) => m.id !== id));
-  }
 }
 
-interface Payment {
-  id: number;
+/**
+ * Payment
+ */
+
+interface Payment extends hasId {
   payer: number;
   money: number;
   members: number[];
+  memo: string;
 }
 
 class PaymentList extends List<Payment> {
-  add(payer: number, money: number, members: number[]) {
-    this.set((list) => [...list, { id: ++this.id, payer, money, members }]);
+  add(members: number[], payer: number = 1, money: number = 0) {
+    this.set((list) => [
+      ...list,
+      { id: ++this.id, payer, money, members, memo: "" },
+    ]);
   }
 
-  delete(id: number) {
-    this.set((list) => list.filter((p) => p.id !== id));
+  change<K extends keyof Payment>(id: number, key: K, value: Payment[K]) {
+    this.set((p) => p.id === id, key, value);
   }
 }
 
-export const DATA = {
-  memberList: new MemberList(),
-  paymentList: new PaymentList(),
-};
+// export datas
+
+const memberList = new MemberList();
+const paymentList = new PaymentList();
+
+export { memberList, paymentList };
