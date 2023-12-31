@@ -13,7 +13,7 @@ interface Props {
 export default function PaymentItem(props: Props) {
   let memoRef: HTMLInputElement;
   let moneyRef: HTMLInputElement;
-  const [selectedSection, selectSection] = createSignal(0);
+  const [selectedSection, selectSection] = createSignal(1);
   const sectionStyle1 = () =>
     props.selected && selectedSection() === 1 ? " section_selected" : "";
   const sectionStyle2 = () =>

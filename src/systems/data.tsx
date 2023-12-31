@@ -67,11 +67,12 @@ export interface Payment extends hasId {
 }
 
 class PaymentList extends List<Payment> {
-  add(members: number[], payer: number = 1, money: number = 0) {
+  add(members: number[], payer: number = 1, money: number = 0): number {
     this.set((list) => [
       ...list,
       { id: ++this.id, payer, money, members, memo: "" },
     ]);
+    return this.id;
   }
 
   change<K extends keyof Payment>(id: number, key: K, value: Payment[K]) {

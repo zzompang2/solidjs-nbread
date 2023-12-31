@@ -42,7 +42,10 @@ export default function Money() {
           </For>
           <button
             class="button_add"
-            onclick={() => paymentList.add(memberList.list.map((m) => m.id))}
+            onclick={() => {
+              const newId = paymentList.add(memberList.list.map((m) => m.id));
+              selectItem(newId);
+            }}
           >
             {TEXT.money.button_add}
           </button>
