@@ -4,6 +4,7 @@ import { For } from "solid-js";
 import { memberList, paymentList } from "~/systems/data";
 import { TEXT } from "~/public/text";
 import { TabMenu, setTab } from "~/systems/signal";
+import PaymentItem from "~/components/paymentItem";
 
 paymentList.add([1, 2, 3], 1, 10000);
 paymentList.add([1, 2], 2, 20000);
@@ -29,44 +30,7 @@ export default function Money() {
         </div>
         <div class="payment_list">
           <For each={paymentList.list}>
-            {(payment) => (
-              <div class="payment_item">
-                <div class="item_section_1">
-                  <select
-                    class="item_payer"
-                    value={payment.payer}
-                    onchange={(e) =>
-                      paymentList.change(
-                        payment.id,
-                        "payer",
-                        Number(e.target.value)
-                      )
-                    }
-                  >
-                    <For each={memberList.list}>
-                      {(member) => (
-                        <option value={member.id}>{member.name}</option>
-                      )}
-                    </For>
-                  </select>
-                  <input
-                    class="item_memo"
-                    type="text"
-                    value={payment.memo}
-                    onchange={(e) =>
-                      paymentList.change(payment.id, "memo", e.target.value)
-                    }
-                  />
-                </div>
-                <div class="item_section_2">
-                  <div class="item_members_count">{payment.members}</div>
-                  <div class="item_members_name">전체</div>
-                </div>
-                <div class="item_section_3">
-                  <div class="item_money">1000원</div>
-                </div>
-              </div>
-            )}
+            {(payment) => <PaymentItem payment={payment} />}
           </For>
           <button
             class="button_add"

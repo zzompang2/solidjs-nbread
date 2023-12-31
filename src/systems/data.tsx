@@ -55,7 +55,7 @@ class MemberList extends List<Member> {
  * Payment
  */
 
-interface Payment extends hasId {
+export interface Payment extends hasId {
   payer: number;
   money: number;
   members: number[];
