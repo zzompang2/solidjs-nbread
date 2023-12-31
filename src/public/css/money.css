@@ -8,10 +8,9 @@
 
 .table {
   width: 100%;
-  padding: 0 24px;
+  padding: 0 8px;
   display: flex;
   font-size: 12px;
-  margin-bottom: 10px;
 }
 
 .payment_list {
@@ -25,24 +24,35 @@
 
 .payment_item {
   display: flex;
-  padding: 12px 24px;
+  flex-direction: column;
+  padding: 8px 8px 0;
   border-radius: 20px;
   background-color: var(--color-white);
   margin-bottom: 10px;
 }
 
+.item_row_info {
+  display: flex;
+}
+
+.item_section_1,
+.item_section_2,
+.item_section_3 {
+  padding: 8px 12px 16px;
+  border-radius: 16px 16px 0 0;
+}
+
 .item_section_1 {
-  width: 70px;
-  margin-right: 16px;
+  width: 100px;
 }
 
 .item_section_2 {
+  min-width: 100px;
   flex: 1;
-  margin-right: 16px;
 }
 
 .item_section_3 {
-  width: 100px;
+  min-width: 100px;
   text-align: end;
   display: flex;
   flex-direction: column;
@@ -54,6 +64,9 @@
 .item_money {
   width: 100%;
   font-size: 16px;
+  white-space: nowrap; /* 줄넘김 방지 */
+  overflow: hidden; /* 넘어간 부분 가리기 */
+  text-overflow: ellipsis; /* 말줄임 적용 */
 }
 
 .item_money {
@@ -65,6 +78,78 @@
   width: 100%;
   font-size: 12px;
   color: var(--color-text-secondary);
+  white-space: nowrap; /* 줄넘김 방지 */
+  overflow: hidden; /* 넘어간 부분 가리기 */
+  text-overflow: ellipsis; /* 말줄임 적용 */
+}
+
+.section_selected {
+  background-color: var(--color-background);
+}
+
+.item_row_edit {
+  width: 100%;
+  padding: 12px 12px 4px;
+  margin-bottom: 8px;
+  border-radius: 0 0 16px 16px;
+  background-color: var(--color-background);
+}
+
+.option_list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.option,
+.label_input {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 0 8px 8px 0;
+  font-size: 16px;
+  color: var(--color-green-02);
+  border: 1.5px solid var(--color-green-02);
+}
+
+.label_input {
+  position: relative;
+  width: 100%;
+  margin-right: 0;
+  background-color: var(--color-white);
+}
+
+.input_memo {
+  width: 100%;
+  font-size: 12px;
+  color: var(--color-green-02);
+  height: 100%;
+  background-color: unset;
+}
+
+.input_money {
+  width: 100%;
+  font-size: 16px;
+  text-align: end;
+  color: var(--color-green-02);
+  padding-right: 8px;
+}
+
+.button_reset {
+  position: absolute;
+  right: 0;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.option.selected {
+  color: var(--color-white);
+  background-color: var(--color-green-02);
 }
 
 .button_add {

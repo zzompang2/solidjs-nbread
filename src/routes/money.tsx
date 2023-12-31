@@ -1,6 +1,6 @@
 // @refresh reload
 import "../public/css/money.css";
-import { For } from "solid-js";
+import { For, createSignal } from "solid-js";
 import { memberList, paymentList } from "~/systems/data";
 import { TEXT } from "~/public/text";
 import { TabMenu, setTab } from "~/systems/signal";
@@ -10,6 +10,8 @@ paymentList.add([1, 2, 3], 1, 10000);
 paymentList.add([1, 2], 2, 20000);
 
 export default function Money() {
+  const [selectedItem, selectItem] = createSignal(0);
+
   return (
     <div class="container_body">
       <div class="container_header">
@@ -30,7 +32,13 @@ export default function Money() {
         </div>
         <div class="payment_list">
           <For each={paymentList.list}>
-            {(payment) => <PaymentItem payment={payment} />}
+            {(payment) => (
+              <PaymentItem
+                payment={payment}
+                selected={selectedItem() === payment.id}
+                select={selectItem}
+              />
+            )}
           </For>
           <button
             class="button_add"

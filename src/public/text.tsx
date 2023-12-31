@@ -13,7 +13,7 @@ export const TEXT = {
     button_add: "추가하기",
     back: "앗! 사람들 이름을 다시 수정하고 싶으신가요?",
     label1: "결제한 사람",
-    label2: "엔빵할 사람",
+    label2: "엔빵할 사람들",
     label3: "결제한 금액",
   },
 };

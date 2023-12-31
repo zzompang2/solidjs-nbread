@@ -49,6 +49,10 @@ class MemberList extends List<Member> {
   add(name: string) {
     this.set((list) => [...list, { id: ++this.id, name }]);
   }
+
+  name(id: number) {
+    return this.list.find((m) => m.id === id)?.name;
+  }
 }
 
 /**
@@ -72,6 +76,19 @@ class PaymentList extends List<Payment> {
 
   change<K extends keyof Payment>(id: number, key: K, value: Payment[K]) {
     this.set((p) => p.id === id, key, value);
+  }
+
+  updateMember(id: number, memberId: number) {
+    const payment = this.list.find((p) => p.id === id);
+    if (payment) {
+      if (payment.members.find((mid) => mid === memberId))
+        this.change(
+          id,
+          "members",
+          payment.members.filter((mid) => mid !== memberId)
+        );
+      else this.change(id, "members", [...payment.members, memberId].sort());
+    }
   }
 }
 
