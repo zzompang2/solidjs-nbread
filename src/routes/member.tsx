@@ -1,9 +1,18 @@
 // @refresh reload
+import "../public/css/member.css";
 import { For, Show, createSignal } from "solid-js";
 import { memberList } from "~/systems/data";
+import { TEXT } from "~/public/text";
+import { TabMenu, setTab } from "~/systems/signal";
+
+// dummy data
+memberList.add("함창수");
+memberList.add("홍길동");
+memberList.add("부알라무마");
 
 export default function Member() {
   const [alert, setAlert] = createSignal({ show: false, message: "" });
+  const [selectedName, selectName] = createSignal(0);
   let inputRef: HTMLInputElement;
   let alertTimer: NodeJS.Timeout;
 
@@ -23,7 +32,7 @@ export default function Member() {
 
     // duplicate
     if (memberList.exist(trimedName)) {
-      popupAlert("중복된 이름입니다.");
+      popupAlert(TEXT.member.alert_duplicate);
       return;
     }
 
@@ -32,33 +41,61 @@ export default function Member() {
   };
 
   return (
-    <main>
-      <div>{memberList.count}명</div>
-      <form onSubmit={handleAddMember}>
-        <input type="text" ref={(ref) => (inputRef = ref)} placeholder="이름" />
-        <button type="submit">추가</button>
-      </form>
-      <p>엔터키로 빠르게 추가할 수 있어요!</p>
-      <For each={memberList.list}>
-        {(member) => (
-          <div>
-            <span>
-              {member.id}. {member.name}
-            </span>
-            <button onclick={() => memberList.delete(member.id)}>삭제</button>
+    <div class="container_body">
+      <div class="container_header">
+        <div class="title">{TEXT.member.title}</div>
+        <button
+          class="button_small"
+          onclick={() => {
+            if (memberList.count < 2) popupAlert("2명 이상이어야 해요.");
+            else setTab(TabMenu.MONEY);
+          }}
+        >
+          {memberList.count + TEXT.member.button}
+        </button>
+      </div>
+
+      <div class="container_members" onclick={() => selectName(0)}>
+        <div class="container_items">
+          <For each={memberList.list}>
+            {(member) => (
+              <span
+                class="name_item"
+                onclick={(e) => {
+                  e.stopPropagation();
+                  selectName(member.id);
+                }}
+              >
+                <span>{member.name}</span>
+                <Show when={selectedName() === member.id}>
+                  <button
+                    class="button_delete"
+                    onclick={() => memberList.delete(member.id)}
+                  >
+                    {TEXT.member.button_delete}
+                  </button>
+                </Show>
+              </span>
+            )}
+          </For>
+        </div>
+        <form class="input_name_form" onSubmit={handleAddMember}>
+          <div class="input_name_warp">
+            <input
+              class="input_name"
+              type="text"
+              ref={(ref) => (inputRef = ref)}
+              placeholder={TEXT.member.placeholder}
+            />
+            <button class="button_add_name" type="submit">
+              {TEXT.member.button_add}
+            </button>
           </div>
-        )}
-      </For>
-      <button
-        onclick={() => {
-          if (memberList.count < 2) popupAlert("2명 이상이어야 해요.");
-        }}
-      >
-        다음
-      </button>
+        </form>
+      </div>
       <Show when={alert().show}>
         <div class="alert">{alert().message}</div>
       </Show>
-    </main>
+    </div>
   );
 }
