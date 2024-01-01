@@ -2,7 +2,7 @@
 import "../public/css/member.css";
 import { For, Show, createSignal } from "solid-js";
 import { memberList } from "~/systems/data";
-import { TEXT } from "~/public/text";
+import { TEXT } from "~/systems/text";
 import { TabMenu, setTab } from "~/systems/signal";
 
 // dummy data

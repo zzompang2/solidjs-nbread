@@ -37,12 +37,12 @@
   border-radius: 28px;
   font-size: 24px;
   color: var(--color-white);
-  background-color: var(--color-green-02);
+  background-color: var(--color-green-03);
   cursor: pointer;
 }
 
 .name_item:hover {
-  background-color: var(--color-green-03);
+  background-color: var(--color-green-04);
 }
 
 .button_delete {

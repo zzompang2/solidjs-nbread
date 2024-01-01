@@ -9,18 +9,21 @@
   --color-yellow: #fed403;
   --color-white: #ffffff;
   --color-gray: #f4f4f4;
-  --color-green-01: #6bc79e;
-  --color-green-02: #09af63;
-  --color-green-03: #028d4a;
+  --color-green-01: #e8f2ef;
+  --color-green-02: #6bc79e;
+  --color-green-03: #09af63;
+  --color-green-04: #028d4a;
   --color-warning: #e50000;
   --color-text-secondary: #ababab;
+  --color-hover: #e8f2ef;
+  --color-selected: #e8f2ef;
 }
 
 html,
 body,
 #app {
   height: 100%;
-  background-color: var(--color-green-01);
+  background-color: var(--color-green-02);
 }
 
 @font-face {

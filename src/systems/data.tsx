@@ -75,6 +75,12 @@ class PaymentList extends List<Payment> {
     return this.id;
   }
 
+  delete(): boolean {
+    if (this.list.length == 1) return false;
+    this.set((list) => list.slice(0, -1));
+    return true;
+  }
+
   change<K extends keyof Payment>(id: number, key: K, value: Payment[K]) {
     this.set((p) => p.id === id, key, value);
   }
@@ -90,6 +96,18 @@ class PaymentList extends List<Payment> {
         );
       else this.change(id, "members", [...payment.members, memberId].sort());
     }
+  }
+
+  selectAll(id: number, list: MemberList) {
+    this.change(
+      id,
+      "members",
+      list.list.map((m) => m.id)
+    );
+  }
+
+  unselectAll(id: number) {
+    this.change(id, "members", []);
   }
 }
 
