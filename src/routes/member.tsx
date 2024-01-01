@@ -6,9 +6,11 @@ import { TEXT } from "~/systems/text";
 import { TabMenu, setTab } from "~/systems/signal";
 
 // dummy data
-memberList.add("함창수");
-memberList.add("홍길동");
-memberList.add("부알라무마");
+memberList.add("하나");
+memberList.add("두울");
+memberList.add("세사리");
+memberList.add("네마리");
+memberList.add("오징어");
 
 export default function Member() {
   const [alert, setAlert] = createSignal({ show: false, message: "" });

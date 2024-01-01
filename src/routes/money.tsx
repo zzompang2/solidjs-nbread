@@ -6,8 +6,18 @@ import { TEXT } from "~/systems/text";
 import { TabMenu, setTab } from "~/systems/signal";
 import PaymentItem from "~/components/paymentItem";
 
-paymentList.add([1, 2, 3], 1, 10000);
-paymentList.add([1, 2], 2, 20000);
+// 두 그룹으로 나뉨
+// paymentList.add([1, 2, 3], 1, 6000);
+// paymentList.add([1, 2], 2, 4000);
+// paymentList.add([1, 2, 3, 4, 5], 3, 10000);
+// paymentList.add([1, 2, 3, 4, 5], 1, 10000);
+// paymentList.add([1, 2, 3, 4, 5], 2, 10000);
+
+paymentList.add([1, 2, 3], 1, 6000);
+paymentList.add([1, 2], 2, 4000);
+paymentList.add([1, 2, 3, 4, 5], 3, 10000);
+paymentList.add([1, 2, 3, 4, 5], 1, 10000);
+paymentList.add([1, 2, 3, 4, 5], 2, 9000);
 
 export default function Money() {
   const [selectedItem, selectItem] = createSignal(0);
