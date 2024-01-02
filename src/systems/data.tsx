@@ -109,6 +109,10 @@ class PaymentList extends List<Payment> {
   unselectAll(id: number) {
     this.change(id, "members", []);
   }
+
+  memo(id: number) {
+    return this.list.find((p) => p.id === id)?.memo || "(메모 없음)";
+  }
 }
 
 // export datas

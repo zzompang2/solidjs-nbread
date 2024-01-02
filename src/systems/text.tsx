@@ -23,4 +23,15 @@ export const TEXT = {
     moneyUnit: "원",
     placeholderMemo: "내용을 입력해주세요(선택)",
   },
+  result: {
+    title: "엔빵 완료!",
+    back: "결제 내역 수정하기",
+    label1: "보내는 사람",
+    label2: "받는 사람",
+    label3: "보낼 돈",
+    label4: "이름",
+    label5: "결제한 돈",
+    label6: "사용한 돈",
+    label7: "받을/보낼돈",
+  },
 };

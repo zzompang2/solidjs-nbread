@@ -1,6 +1,6 @@
 import { memberList, paymentList } from "./data";
 
-interface PayInfo {
+export interface PayInfo {
   mid: number; // member 의 id
   pay: { pid: number; money: number }[]; // 결제한 payments 리스트
   use: { pid: number; money: number }[]; // 사용한 payments 리스트
@@ -9,7 +9,7 @@ interface PayInfo {
   included: boolean; // 부분집합 구할 때 사용(calculateSubsetList() 참고)
 }
 
-interface Sending {
+export interface Sending {
   from: number; // 송금해야 하는 member id
   to: number; // 돈을 받아야 할 member id
   money: number;
@@ -22,10 +22,10 @@ interface Sending {
  * - 나누어 떨어지지 않을 땐 1원 단위로 올림하여 결제자에게 차액(bonus)을 주기
  * - 부분집합 별로 가장 많은 금액을 결제한 사람은 송금하지 않기
  */
-export const calculateNBread = (): {
-  payInfoList: PayInfo[];
-  sendingList: Sending[];
-} => {
+export const calculateNBread = (): [
+  payInfoList: PayInfo[],
+  sendingList: Sending[]
+] => {
   // e.g. of element: PayInfo
   // { mid: 1, pay: [{1, 500}, {2, 500}], use: [{1, 167}, {2, 167}], money: -668, bonus: 2, ... }
   const payInfoList: PayInfo[] = createPayInfoList();
@@ -42,9 +42,7 @@ export const calculateNBread = (): {
     sendingList.push(...calculateSendingFlow(subset));
   });
 
-  console.log("payInfoList", payInfoList);
-  console.log("sendingList", sendingList);
-  return { payInfoList, sendingList };
+  return [payInfoList, sendingList];
 };
 
 /**

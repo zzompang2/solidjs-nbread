@@ -3,6 +3,7 @@
   flex-direction: column;
   position: relative;
   min-width: 450px;
+  max-width: 450px;
   height: 800px;
   border-radius: 32px;
   background-color: var(--color-background);

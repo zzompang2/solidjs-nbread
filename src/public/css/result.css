@@ -1,0 +1,52 @@
+.container_sendings {
+  flex: 1;
+  height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.container_sendings::-webkit-scrollbar {
+  display: none;
+}
+
+.sending_list {
+  margin: 0 20px;
+  border-radius: 20px;
+  background-color: var(--color-white);
+}
+
+.container_sendings > .table {
+  display: flex;
+  align-items: center;
+}
+
+.container_sendings > .section {
+  flex: 1;
+}
+
+.sending_item {
+  display: flex;
+  align-items: center;
+  padding: 8px 8px 4px;
+}
+
+.section_payinfo {
+  flex: 1;
+  padding: 8px 12px;
+}
+
+.section_payinfo_money {
+  flex: 1;
+  text-align: end;
+  padding: 8px 12px;
+}
+
+.payinfo_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  border-radius: 20px;
+  background-color: var(--color-white);
+}
