@@ -80,7 +80,7 @@ export default function PaymentItem(props: Props) {
       </div>
       <Show when={props.selected}>
         <PaymentEdit
-          selectedSection={selectedSection}
+          selectedSection={selectedSection()}
           payment={props.payment}
         />
       </Show>

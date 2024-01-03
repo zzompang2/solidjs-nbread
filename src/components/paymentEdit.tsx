@@ -1,10 +1,10 @@
-import { Accessor, For, Match, Switch } from "solid-js";
+import { Accessor, For, Match, Switch, createEffect } from "solid-js";
 import { memberList, Payment, paymentList } from "~/systems/data";
 import Reset from "~/public/assets/icons/reset";
 import { TEXT } from "~/systems/text";
 
 interface Props {
-  selectedSection: Accessor<number>;
+  selectedSection: number;
   payment: Payment;
 }
 
@@ -32,10 +32,15 @@ export default function PaymentEdit(props: Props) {
     else moneyRef.value = String(props.payment.money);
   };
 
+  createEffect(() => {
+    if (props.selectedSection === 1) memoRef?.select();
+    else if (props.selectedSection === 3) moneyRef?.select();
+  });
+
   return (
     <div class="payment_editer">
       <Switch>
-        <Match when={props.selectedSection() === 1}>
+        <Match when={props.selectedSection === 1}>
           <div class="list">
             <For each={memberList.list}>
               {(member) => (
@@ -66,7 +71,7 @@ export default function PaymentEdit(props: Props) {
             </div>
           </form>
         </Match>
-        <Match when={props.selectedSection() === 2}>
+        <Match when={props.selectedSection === 2}>
           <div class="list">
             <For each={memberList.list}>
               {(member) => (
@@ -99,7 +104,7 @@ export default function PaymentEdit(props: Props) {
             </button>
           </div>
         </Match>
-        <Match when={props.selectedSection() === 3}>
+        <Match when={props.selectedSection === 3}>
           <form class="label_input" onsubmit={changeMoney}>
             <input
               class="input_money"

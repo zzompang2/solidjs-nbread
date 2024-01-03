@@ -21,7 +21,7 @@ export const TEXT = {
     allSelected: "전체",
     emptySelected: "(엔빵 대상자들을 선택해주세요)",
     moneyUnit: "원",
-    placeholderMemo: "내용을 입력해주세요(선택)",
+    placeholderMemo: "내용을 입력해주세요(점심식사, 커피 등)",
   },
   result: {
     title: "엔빵 완료!",

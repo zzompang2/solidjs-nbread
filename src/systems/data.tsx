@@ -111,7 +111,7 @@ class PaymentList extends List<Payment> {
   }
 
   memo(id: number) {
-    return this.list.find((p) => p.id === id)?.memo || "(메모 없음)";
+    return this.list.find((p) => p.id === id)?.memo || "(내용 없음)";
   }
 }
 

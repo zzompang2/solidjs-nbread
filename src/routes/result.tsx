@@ -55,7 +55,9 @@ export default function Result() {
             </div>
             <button onclick={() => copyResultText()}>텍스트로 복사하기</button>
           </div>
-          <div class="middle_title">디테일한 정보</div>
+          <div class="middle_title">
+            아래 항목을 클릭해서 디테일한 정보를 확인해보세요.
+          </div>
           <div class="table">
             <span class="col_flexible">{TEXT.result.label4}</span>
             <span class="col_money">{TEXT.result.label5}</span>
