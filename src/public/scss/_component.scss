@@ -1,0 +1,37 @@
+@import "./color";
+@import "./size";
+@import "./font";
+
+@mixin button_yellow {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: $radius-md;
+  background-color: $color-yellow;
+}
+
+@mixin hideScrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin limitOneLine {
+  white-space: nowrap; /* 줄넘김 방지 */
+  overflow: hidden; /* 넘어간 부분 가리기 */
+  text-overflow: ellipsis; /* 말줄임 적용 */
+}
+
+@mixin hoverWhite {
+  cursor: pointer;
+  background-color: $color-green-01;
+}
+
+@mixin selectedWhite {
+  background-color: $color-green-01;
+}
+
+@mixin hoverGreen {
+  cursor: pointer;
+  background-color: $color-green-04;
+  color: $color-white;
+}

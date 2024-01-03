@@ -23,24 +23,24 @@ export default function Money() {
   const [selectedItem, selectItem] = createSignal(0);
 
   return (
-    <div class="container_body" onclick={() => selectItem(0)}>
-      <div class="container_header">
-        <div class="back_message" onclick={() => setTab(TabMenu.MEMBER)}>
+    <div class="ctn" onclick={() => selectItem(0)}>
+      <div class="ctn_header">
+        <div class="subtitle" onclick={() => setTab(TabMenu.MEMBER)}>
           {TEXT.money.back}
         </div>
         <div class="title">{TEXT.money.title}</div>
-        <button class="button_small" onclick={() => setTab(TabMenu.RESULT)}>
+        <button onclick={() => setTab(TabMenu.RESULT)}>
           {TEXT.money.button}
         </button>
       </div>
 
-      <div class="container_payments">
+      <div class="payment_list">
         <div class="table">
-          <span class="section_1">{TEXT.money.label1}</span>
-          <span class="section_2">{TEXT.money.label2}</span>
-          <span class="section_3">{TEXT.money.label3}</span>
+          <span class="col_name">{TEXT.money.label1}</span>
+          <span class="col_member">{TEXT.money.label2}</span>
+          <span class="col_money">{TEXT.money.label3}</span>
         </div>
-        <div class="payment_list">
+        <div class="items">
           <For each={paymentList.list}>
             {(payment) => (
               <PaymentItem
@@ -62,7 +62,7 @@ export default function Money() {
               {TEXT.money.button_add}
             </button>
             <button
-              class="button_delete_payment"
+              class="button_delete"
               onclick={(e) => {
                 e.stopPropagation();
                 selectItem(0);

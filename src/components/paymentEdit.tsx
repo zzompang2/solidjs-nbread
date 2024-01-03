@@ -33,10 +33,10 @@ export default function PaymentEdit(props: Props) {
   };
 
   return (
-    <div class="item_row_edit">
+    <div class="payment_editer">
       <Switch>
         <Match when={props.selectedSection() === 1}>
-          <div class="option_list">
+          <div class="list">
             <For each={memberList.list}>
               {(member) => (
                 <div
@@ -67,7 +67,7 @@ export default function PaymentEdit(props: Props) {
           </form>
         </Match>
         <Match when={props.selectedSection() === 2}>
-          <div class="option_list">
+          <div class="list">
             <For each={memberList.list}>
               {(member) => (
                 <div
@@ -86,21 +86,17 @@ export default function PaymentEdit(props: Props) {
               )}
             </For>
           </div>
-          <div class="option_button_list">
-            <span
-              class="option_button"
+          <div class="button_list">
+            <button
               onclick={() =>
                 paymentList.selectAll(props.payment.id, memberList)
               }
             >
               전체선택
-            </span>
-            <span
-              class="option_button"
-              onclick={() => paymentList.unselectAll(props.payment.id)}
-            >
+            </button>
+            <button onclick={() => paymentList.unselectAll(props.payment.id)}>
               선택취소
-            </span>
+            </button>
           </div>
         </Match>
         <Match when={props.selectedSection() === 3}>

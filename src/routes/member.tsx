@@ -43,11 +43,10 @@ export default function Member() {
   };
 
   return (
-    <div class="container_body">
-      <div class="container_header">
+    <div class="ctn">
+      <div class="ctn_header">
         <div class="title">{TEXT.member.title}</div>
         <button
-          class="button_small"
           onclick={() => {
             if (memberList.count < 2) popupAlert("2명 이상이어야 해요.");
             else setTab(TabMenu.MONEY);
@@ -57,41 +56,40 @@ export default function Member() {
         </button>
       </div>
 
-      <div class="container_members" onclick={() => selectName(0)}>
-        <div class="container_items">
-          <For each={memberList.list}>
-            {(member) => (
-              <span
-                class="name_item"
-                onclick={(e) => {
-                  e.stopPropagation();
-                  selectName(member.id);
-                }}
-              >
-                <span>{member.name}</span>
-                <Show when={selectedName() === member.id}>
-                  <button
-                    class="button_delete"
-                    onclick={() => memberList.delete(member.id)}
-                  >
-                    {TEXT.member.button_delete}
-                  </button>
-                </Show>
-              </span>
-            )}
-          </For>
+      <div class="ctn_body" onclick={() => selectName(0)}>
+        <div class="member_list">
+          <div class="wrap">
+            <For each={memberList.list}>
+              {(member) => (
+                <span
+                  class="item"
+                  onclick={(e) => {
+                    e.stopPropagation();
+                    selectName(member.id);
+                  }}
+                >
+                  <span>{member.name}</span>
+                  <Show when={selectedName() === member.id}>
+                    <button
+                      class="button_delete"
+                      onclick={() => memberList.delete(member.id)}
+                    >
+                      {TEXT.member.button_delete}
+                    </button>
+                  </Show>
+                </span>
+              )}
+            </For>
+          </div>
         </div>
-        <form class="input_name_form" onSubmit={handleAddMember}>
-          <div class="input_name_warp">
+        <form class="member_input" onSubmit={handleAddMember}>
+          <div class="wrap">
             <input
-              class="input_name"
               type="text"
               ref={(ref) => (inputRef = ref)}
               placeholder={TEXT.member.placeholder}
             />
-            <button class="button_add_name" type="submit">
-              {TEXT.member.button_add}
-            </button>
+            <button type="submit">{TEXT.member.button_add}</button>
           </div>
         </form>
       </div>

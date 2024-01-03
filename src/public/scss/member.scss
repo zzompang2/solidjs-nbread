@@ -1,77 +1,80 @@
-.container_members {
-  height: 0;
+@import "./component";
+
+.member_list {
   flex: 1;
+  height: 0;
+  padding: 0 0 10px 20px;
   display: flex;
   flex-direction: column;
+  align-items: end;
   justify-content: flex-end;
-  width: 100%;
+  align-items: flex-start;
+
+  .wrap {
+    @include hideScrollbar;
+    overflow: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    height: fit-content;
+  }
+
+  .item {
+    @include text-lg;
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    padding: 0 24px;
+    margin: 0 10px 10px 0;
+    border-radius: $radius-lg;
+    color: $color-white;
+    background-color: $color-green-03;
+
+    &:hover {
+      @include hoverGreen;
+    }
+  }
+
+  .button_delete {
+    @include text-lg;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: $radius-lg;
+    border: 2px solid $color-warning;
+    color: $color-warning;
+    background-color: $color-yellow;
+  }
 }
 
-.input_name_form {
+.member_input {
   padding: 10px;
-  background-color: var(--color-white);
-}
+  background-color: $color-white;
 
-.input_name_warp {
-  display: flex;
-  height: 48px;
-  padding: 4px;
-  border-radius: 24px;
-  background-color: var(--color-gray);
-}
+  .wrap {
+    display: flex;
+    height: 48px;
+    padding: 4px;
+    border-radius: $radius-lg;
+    background-color: $color-gray;
+  }
 
-.container_items {
-  overflow: scroll;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 0 10px 20px;
-}
+  input {
+    flex: 1;
+    background-color: unset;
+    padding: 0 20px;
+    border-radius: $radius-lg;
+  }
 
-.name_item {
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 56px;
-  padding: 0 24px;
-  margin: 0 10px 10px 0;
-  border-radius: 28px;
-  font-size: 24px;
-  color: var(--color-white);
-  background-color: var(--color-green-03);
-  cursor: pointer;
-}
-
-.name_item:hover {
-  background-color: var(--color-green-04);
-}
-
-.button_delete {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 28px;
-  font-size: 20px;
-  border: 2px solid var(--color-warning);
-  color: var(--color-warning);
-  background-color: var(--color-yellow);
-}
-
-.input_name {
-  flex: 1;
-  background-color: unset;
-  padding: 0 20px;
-
-  border-radius: 24px;
-}
-
-.button_add_name {
-  width: 40px;
-  height: 40px;
-  margin-left: 10px;
-  border-radius: 20px;
-  background-color: var(--color-yellow);
+  button {
+    @include button_yellow;
+    width: 40px;
+    margin-left: 10px;
+    padding: 0;
+  }
 }
 
 .alert {
@@ -79,8 +82,8 @@
   bottom: 78px;
   left: 50%;
   transform: translate(-50%);
-  border-radius: 12px;
-  background-color: var(--color-warning);
-  color: var(--color-white);
+  border-radius: $radius-sm;
+  background-color: $color-warning;
+  color: $color-white;
   padding: 10px 16px;
 }

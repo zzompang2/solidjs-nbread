@@ -1,5 +1,5 @@
 // @refresh reload
-import "./app.css";
+import "./public/css/app.css";
 import { Router, Route } from "@solidjs/router";
 import Home from "./routes/home";
 import Calculation from "./routes/calculation";

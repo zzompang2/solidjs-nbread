@@ -1,52 +1,117 @@
-.container_sendings {
-  flex: 1;
-  height: 0;
+@import "./component";
+
+.result_scroll {
+  @include hideScrollbar;
+  overflow-y: scroll;
+  align-self: center;
+  // max-width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
-}
-
-.container_sendings::-webkit-scrollbar {
-  display: none;
-}
-
-.sending_list {
-  margin: 0 20px;
-  border-radius: 20px;
-  background-color: var(--color-white);
-}
-
-.container_sendings > .table {
-  display: flex;
   align-items: center;
-}
 
-.container_sendings > .section {
-  flex: 1;
+  .ctn_sending {
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .table {
+    @include text-sm;
+    padding: 0 36px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .col_flexible {
+    @include limitOneLine;
+    flex: 1;
+    padding: 8px 12px;
+  }
+
+  .col_money {
+    @include limitOneLine;
+    flex: 1;
+    text-align: end;
+    padding: 8px 12px;
+
+    &.take {
+      color: $color-green-04;
+    }
+
+    &.send {
+      color: $color-warning;
+    }
+  }
+
+  .col_money_sm {
+    @include limitOneLine;
+    @include text-sm;
+    text-align: end;
+    flex: 1;
+    padding: 8px 12px;
+  }
+
+  .list {
+    margin: 0 20px 20px;
+    padding: 8px 8px 0;
+    border-radius: $radius-md;
+    background-color: $color-white;
+    width: 100%;
+    min-width: 400px;
+    max-width: calc(100% - 40px);
+  }
 }
 
 .sending_item {
   display: flex;
   align-items: center;
-  padding: 8px 8px 4px;
+  padding: 8px 8px 16px;
 }
 
-.section_payinfo {
-  flex: 1;
-  padding: 8px 12px;
-}
-
-.section_payinfo_money {
-  flex: 1;
-  text-align: end;
-  padding: 8px 12px;
+.middle_title {
+  margin: 40px 0 20px;
+  text-align: center;
 }
 
 .payinfo_item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8px;
-  border-radius: 20px;
-  background-color: var(--color-white);
+  background-color: $color-white;
+  border-radius: $radius-sm;
+  margin-bottom: 8px;
+
+  &.selected {
+    @include selectedWhite;
+  }
+
+  .row_info {
+    display: flex;
+    width: 100%;
+    padding: 8px;
+    border-radius: $radius-sm;
+
+    &:hover {
+      @include hoverWhite;
+    }
+  }
+}
+
+.info_detail {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: $radius-sm;
+  padding: 0px 20px 16px;
+  @include text-sm;
+
+  .title {
+    font-weight: bold;
+    margin: 12px 0 4px;
+  }
+
+  .info {
+    margin-bottom: 4px;
+  }
 }

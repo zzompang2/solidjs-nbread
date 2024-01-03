@@ -1,76 +1,88 @@
-.container_members {
-  height: 0;
+@font-face {
+  font-family: "cafe24_title";
+  src: url("../assets/Cafe24SsurroundAir-v1.1.otf");
+}
+@font-face {
+  font-family: "cafe24_body";
+  src: url("../assets/Cafe24OhsquareAir-v2.0.otf");
+}
+.member_list {
   flex: 1;
+  height: 0;
+  padding: 0 0 10px 20px;
   display: flex;
   flex-direction: column;
+  align-items: end;
   justify-content: flex-end;
-  width: 100%;
+  align-items: flex-start;
 }
-
-.input_name_form {
-  padding: 10px;
-  background-color: var(--color-white);
-}
-
-.input_name_warp {
-  display: flex;
-  height: 48px;
-  padding: 4px;
-  border-radius: 24px;
-  background-color: var(--color-gray);
-}
-
-.container_items {
+.member_list .wrap {
   overflow: scroll;
   display: flex;
   flex-wrap: wrap;
-  padding: 0 0 10px 20px;
+  align-items: end;
+  height: fit-content;
 }
-
-.name_item {
+.member_list .wrap::-webkit-scrollbar {
+  display: none;
+}
+.member_list .item {
+  font-size: 20px;
+  line-height: 150%;
   position: relative;
   display: flex;
   align-items: center;
-  height: 56px;
+  height: 48px;
   padding: 0 24px;
   margin: 0 10px 10px 0;
-  border-radius: 28px;
-  font-size: 24px;
-  color: var(--color-white);
-  background-color: var(--color-green-03);
+  border-radius: 24px;
+  color: #ffffff;
+  background-color: #09af63;
+}
+.member_list .item:hover {
   cursor: pointer;
+  background-color: #028d4a;
+  color: #ffffff;
 }
-
-.name_item:hover {
-  background-color: var(--color-green-04);
-}
-
-.button_delete {
+.member_list .button_delete {
+  font-size: 20px;
+  line-height: 150%;
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  border-radius: 28px;
-  font-size: 20px;
-  border: 2px solid var(--color-warning);
-  color: var(--color-warning);
-  background-color: var(--color-yellow);
+  border-radius: 24px;
+  border: 2px solid #e50000;
+  color: #e50000;
+  background-color: #fed403;
 }
 
-.input_name {
+.member_input {
+  padding: 10px;
+  background-color: #ffffff;
+}
+.member_input .wrap {
+  display: flex;
+  height: 48px;
+  padding: 4px;
+  border-radius: 24px;
+  background-color: #f4f4f4;
+}
+.member_input input {
   flex: 1;
   background-color: unset;
   padding: 0 20px;
   border-radius: 24px;
 }
-
-.button_add_name {
-  width: 40px;
+.member_input button {
   height: 40px;
-  margin-left: 10px;
+  padding: 0 16px;
   border-radius: 20px;
-  background-color: var(--color-yellow);
+  background-color: #fed403;
+  width: 40px;
+  margin-left: 10px;
+  padding: 0;
 }
 
 .alert {
@@ -79,8 +91,8 @@
   left: 50%;
   transform: translate(-50%);
   border-radius: 12px;
-  background-color: var(--color-warning);
-  color: var(--color-white);
+  background-color: #e50000;
+  color: #ffffff;
   padding: 10px 16px;
 }
 

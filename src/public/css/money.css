@@ -1,192 +1,204 @@
 @charset "UTF-8";
-.container_payments {
-  flex: 1;
-  height: 0;
-  display: flex;
-  flex-direction: column;
+@font-face {
+  font-family: "cafe24_title";
+  src: url("../assets/Cafe24SsurroundAir-v1.1.otf");
 }
-
-.table {
-  width: 100%;
-  padding: 0 28px;
-  display: flex;
-  font-size: 12px;
+@font-face {
+  font-family: "cafe24_body";
+  src: url("../assets/Cafe24OhsquareAir-v2.0.otf");
 }
-
 .payment_list {
+  height: 0;
   flex: 1;
-  padding: 0 20px;
-  overflow-y: scroll;
-}
-
-.payment_list::-webkit-scrollbar {
-  display: none;
-}
-
-.payment_item {
   display: flex;
   flex-direction: column;
-  padding: 8px 8px 4px;
-  border-radius: 20px;
-  background-color: var(--color-white);
-  margin-bottom: 10px;
-  /* box-shadow: 0px 3px 4px 1px #e5e5e5; */
 }
-
-.item_row_info {
-  display: flex;
-  width: 100%;
-}
-
-.section_1,
-.section_2,
-.section_3 {
-  padding: 8px 12px;
-  margin-bottom: 4px;
-  border-radius: 16px;
-}
-
-.section_1,
-.section_2 {
-  margin-right: 4px;
-}
-
-.section_1 {
+.payment_list .col_name {
   width: 100px;
+  margin-right: 4px;
+  padding: 8px 12px;
 }
-
-.section_2 {
-  min-width: 100px;
+.payment_list .col_member {
   flex: 1;
+  min-width: 100px;
+  margin-right: 4px;
+  padding: 8px 12px;
 }
-
-.section_3 {
+.payment_list .col_money {
   min-width: 100px;
   text-align: end;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 8px 12px;
 }
-
-.item_section_1:hover,
-.item_section_2:hover,
-.item_section_3:hover {
+.payment_list .clickable {
+  margin-bottom: 4px;
+  border-radius: 12px;
+}
+.payment_list .clickable:hover {
   cursor: pointer;
-  background-color: var(--color-hover);
+  background-color: #e8f2ef;
 }
-
-.item_payer,
-.item_members_count,
-.item_money {
-  width: 100%;
-  font-size: 16px;
-  white-space: nowrap; /* 줄넘김 방지 */
-  overflow: hidden; /* 넘어간 부분 가리기 */
-  text-overflow: ellipsis; /* 말줄임 적용 */
-}
-
-.item_money {
-  text-align: end;
-}
-
-.item_memo,
-.item_members_name {
+.payment_list .clickable.selected {
   position: relative;
-  width: 100%;
-  font-size: 12px;
-  color: var(--color-text-secondary);
-  white-space: nowrap; /* 줄넘김 방지 */
-  overflow: hidden; /* 넘어간 부분 가리기 */
-  text-overflow: ellipsis; /* 말줄임 적용 */
+  background-color: #e8f2ef;
 }
-
-.section_selected {
-  position: relative;
-  background-color: var(--color-selected);
-}
-
-.section_selected::before {
+.payment_list .clickable.selected::before {
   content: "";
   width: 100%;
   height: 32px;
-  background-color: var(--color-selected);
+  background-color: #e8f2ef;
   position: absolute;
   bottom: -16px;
   left: 0;
 }
+.payment_list .table {
+  font-size: 12px;
+  line-height: 150%;
+  width: 100%;
+  padding: 0 28px;
+  display: flex;
+}
+.payment_list .items {
+  flex: 1;
+  padding: 0 20px;
+  overflow-y: scroll;
+}
+.payment_list .items::-webkit-scrollbar {
+  display: none;
+}
+.payment_list .items .item {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 8px 4px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+}
+.payment_list .items .item .wrap {
+  display: flex;
+  width: 100%;
+}
+.payment_list .items .item .row_payer,
+.payment_list .items .item .row_number,
+.payment_list .items .item .row_money {
+  font-size: 16px;
+  line-height: 150%;
+  white-space: nowrap; /* 줄넘김 방지 */
+  overflow: hidden; /* 넘어간 부분 가리기 */
+  text-overflow: ellipsis; /* 말줄임 적용 */
+  width: 100%;
+  white-space: nowrap; /* 줄넘김 방지 */
+  overflow: hidden; /* 넘어간 부분 가리기 */
+  text-overflow: ellipsis; /* 말줄임 적용 */
+}
+.payment_list .items .item .row_memo,
+.payment_list .items .item .row_names {
+  font-size: 12px;
+  line-height: 150%;
+  white-space: nowrap; /* 줄넘김 방지 */
+  overflow: hidden; /* 넘어간 부분 가리기 */
+  text-overflow: ellipsis; /* 말줄임 적용 */
+  position: relative;
+  width: 100%;
+  color: #ababab;
+}
+.payment_list .items > .button_list {
+  display: flex;
+  height: 50px;
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+.payment_list .items > .button_list button {
+  height: 100%;
+  padding: 0 16px;
+  border-radius: 20px;
+  font-size: 16px;
+  line-height: 150%;
+  background-color: #fed403;
+}
+.payment_list .items > .button_list .button_add {
+  flex: 1;
+  margin-right: 10px;
+}
+.payment_list .items > .button_list .button_delete {
+  width: 100px;
+}
 
-.item_row_edit {
+.payment_editer {
   position: relative;
   width: 100%;
   padding: 12px 12px 4px;
   margin-bottom: 4px;
-  border-radius: 16px;
-  background-color: var(--color-selected);
+  border-radius: 12px;
+  background-color: #e8f2ef;
 }
-
-.option_button_list {
-  font-family: "cafe24_title";
-  font-size: 12px;
-  margin: 8px 0;
-}
-
-.option_button {
-  margin-right: 6px;
-  color: var(--color-green-04);
-}
-
-.option_button:hover {
-  border-bottom: 1px solid var(--color-green-04);
-}
-
-.option_list {
+.payment_editer .list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
-
-.option,
-.label_input {
+.payment_editer .option,
+.payment_editer .label_input {
+  font-size: 16px;
+  line-height: 150%;
   display: flex;
   align-items: center;
   padding: 0 12px;
   height: 40px;
   border-radius: 20px;
   margin: 0 8px 8px 0;
-  font-size: 16px;
-  color: var(--color-green-03);
-  border: 1.5px solid var(--color-green-03);
+  color: #09af63;
+  border: 1.5px solid #09af63;
 }
-
-.option:hover {
+.payment_editer .option:hover {
   cursor: pointer;
-  background-color: var(--color-yellow);
+  background-color: #028d4a;
+  color: #ffffff;
 }
-
-.label_input {
+.payment_editer .option.selected {
+  color: #ffffff;
+  background-color: #09af63;
+}
+.payment_editer .button_list {
+  font-family: "cafe24_title";
+  font-size: 12px;
+  line-height: 150%;
+  margin: 8px 0;
+}
+.payment_editer .button_list button {
+  margin-right: 6px;
+  color: #028d4a;
+  background-color: unset;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+}
+.payment_editer .button_list button:hover {
+  border-bottom-color: #028d4a;
+}
+.payment_editer .label_input {
   position: relative;
   width: 100%;
   margin-right: 0;
-  background-color: var(--color-white);
+  background-color: #ffffff;
 }
-
-.input_memo {
-  width: 100%;
+.payment_editer .input_memo {
   font-size: 12px;
-  color: var(--color-green-03);
+  line-height: 150%;
+  width: 100%;
+  color: #09af63;
   height: 100%;
   background-color: unset;
 }
-
-.input_money {
-  width: 100%;
+.payment_editer .input_money {
   font-size: 16px;
+  line-height: 150%;
+  width: 100%;
   text-align: end;
-  color: var(--color-green-03);
+  color: #09af63;
   padding-right: 8px;
 }
-
-.button_reset {
+.payment_editer .button_reset {
   position: absolute;
   right: 0;
   height: 40px;
@@ -194,35 +206,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.option.selected {
-  color: var(--color-white);
-  background-color: var(--color-green-03);
-}
-
-.button_list {
-  display: flex;
-  height: 50px;
-  padding-top: 10px;
-  margin-bottom: 20px;
-}
-
-.button_list > button {
-  height: 100%;
-  padding: 0 16px;
-  border-radius: 20px;
-  font-size: 16px;
-  background-color: var(--color-yellow);
-}
-
-.button_add {
-  flex: 1;
-  margin-right: 10px;
-}
-
-.button_delete_payment {
-  width: 100px;
 }
 
 /*# sourceMappingURL=money.css.map */
