@@ -19,8 +19,17 @@
   display: none;
 }
 .result_scroll .ctn_sending {
+  display: flex;
+  flex-direction: column;
   width: fit-content;
   max-width: 100%;
+}
+.result_scroll button {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 20px;
+  background-color: #fed403;
+  margin: 0 20px;
 }
 .result_scroll .table {
   font-size: 12px;
@@ -114,7 +123,6 @@
   line-height: 150%;
 }
 .info_detail .title {
-  font-weight: bold;
   margin: 12px 0 4px;
 }
 .info_detail .info {

@@ -161,11 +161,20 @@
   color: #ffffff;
   background-color: #09af63;
 }
+.payment_editer .label_input {
+  position: relative;
+  width: 100%;
+  margin-right: 0;
+  background-color: #ffffff;
+}
 .payment_editer .button_list {
-  font-family: "cafe24_title";
   font-size: 12px;
   line-height: 150%;
-  margin: 8px 0;
+  font-family: "cafe24_title";
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 8px;
+  height: 40px;
 }
 .payment_editer .button_list button {
   margin-right: 6px;
@@ -175,12 +184,6 @@
 }
 .payment_editer .button_list button:hover {
   border-bottom-color: #028d4a;
-}
-.payment_editer .label_input {
-  position: relative;
-  width: 100%;
-  margin-right: 0;
-  background-color: #ffffff;
 }
 .payment_editer .input_memo {
   font-size: 12px;

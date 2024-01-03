@@ -11,8 +11,15 @@
   align-items: center;
 
   .ctn_sending {
+    display: flex;
+    flex-direction: column;
     width: fit-content;
     max-width: 100%;
+  }
+
+  button {
+    @include button_yellow;
+    margin: 0 20px;
   }
 
   .table {
@@ -107,7 +114,6 @@
   @include text-sm;
 
   .title {
-    font-weight: bold;
     margin: 12px 0 4px;
   }
 
