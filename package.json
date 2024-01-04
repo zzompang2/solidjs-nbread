@@ -7,7 +7,7 @@
     "build": "vinxi build",
     "start": "node ./.output/server/index.mjs",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "@solidjs/router": "^0.10.5",
