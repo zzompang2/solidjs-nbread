@@ -67,4 +67,34 @@
   flex-direction: column;
 }
 
+.guide {
+  position: relative;
+  width: max-content;
+  background-color: #6bc79e;
+  padding: 20px;
+  border-radius: 20px;
+}
+.guide::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  bottom: -20px;
+  width: 4px;
+  height: 24px;
+  border-radius: 2px;
+  background-color: #6bc79e;
+  translate: -50%;
+}
+.guide::after {
+  content: "";
+  position: absolute;
+  bottom: -28px;
+  left: 20px;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background-color: #6bc79e;
+  translate: -50%;
+}
+
 /*# sourceMappingURL=calculation.css.map */

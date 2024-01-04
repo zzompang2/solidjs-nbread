@@ -58,3 +58,35 @@
   display: flex;
   flex-direction: column;
 }
+
+.guide {
+  position: relative;
+  width: max-content;
+  background-color: $color-green-02;
+  padding: 20px;
+  border-radius: $radius-md;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    bottom: -20px;
+    width: 4px;
+    height: 24px;
+    border-radius: 2px;
+    background-color: $color-green-02;
+    translate: (-50%);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -28px;
+    left: 20px;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    background-color: $color-green-02;
+    translate: (-50%);
+  }
+}

@@ -1,16 +1,9 @@
 // @refresh reload
 import "../public/css/member.css";
-import { For, Show, createSignal } from "solid-js";
+import { For, Show, Switch, createSignal } from "solid-js";
 import { memberList } from "~/systems/data";
 import { TEXT } from "~/systems/text";
 import { TabMenu, setTab } from "~/systems/signal";
-
-// dummy data
-memberList.add("하나");
-memberList.add("두울");
-memberList.add("세사리");
-memberList.add("네마리");
-memberList.add("오징어");
 
 export default function Member() {
   const [alert, setAlert] = createSignal({ show: false, message: "" });
@@ -58,29 +51,36 @@ export default function Member() {
 
       <div class="ctn_body" onclick={() => selectName(0)}>
         <div class="member_list">
-          <div class="wrap">
-            <For each={memberList.list}>
-              {(member) => (
-                <span
-                  class="item"
-                  onclick={(e) => {
-                    e.stopPropagation();
-                    selectName(member.id);
-                  }}
-                >
-                  <span>{member.name}</span>
-                  <Show when={selectedName() === member.id}>
-                    <button
-                      class="button_delete"
-                      onclick={() => memberList.delete(member.id)}
-                    >
-                      {TEXT.member.button_delete}
-                    </button>
-                  </Show>
-                </span>
-              )}
-            </For>
-          </div>
+          <Show
+            when={memberList.count !== 0}
+            fallback={
+              <div class="guide">이름을 입력하고 [추가]버튼을 눌러보세요!</div>
+            }
+          >
+            <div class="wrap">
+              <For each={memberList.list}>
+                {(member) => (
+                  <span
+                    class="item"
+                    onclick={(e) => {
+                      e.stopPropagation();
+                      selectName(member.id);
+                    }}
+                  >
+                    <span>{member.name}</span>
+                    <Show when={selectedName() === member.id}>
+                      <button
+                        class="button_delete"
+                        onclick={() => memberList.delete(member.id)}
+                      >
+                        {TEXT.member.button_delete}
+                      </button>
+                    </Show>
+                  </span>
+                )}
+              </For>
+            </div>
+          </Show>
         </div>
         <form class="member_input" onSubmit={handleAddMember}>
           <div class="wrap">

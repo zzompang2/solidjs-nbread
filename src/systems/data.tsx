@@ -31,6 +31,11 @@ class List<T extends hasId> {
   delete(id: number) {
     this.set((list) => list.filter((elem) => elem.id !== id));
   }
+
+  reset() {
+    this.set([]);
+    this.id = 0;
+  }
 }
 
 /**
@@ -67,10 +72,10 @@ export interface Payment extends hasId {
 }
 
 class PaymentList extends List<Payment> {
-  add(members: number[], payer: number = 1, money: number = 0): number {
+  add(members: number[], money: number = 0): number {
     this.set((list) => [
       ...list,
-      { id: ++this.id, payer, money, members, memo: "" },
+      { id: ++this.id, payer: members[0], money, members, memo: "" },
     ]);
     return this.id;
   }

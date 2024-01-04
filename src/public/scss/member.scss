@@ -9,6 +9,7 @@
   align-items: end;
   justify-content: flex-end;
   align-items: flex-start;
+  position: relative;
 
   .wrap {
     @include hideScrollbar;

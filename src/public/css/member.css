@@ -15,6 +15,7 @@
   align-items: end;
   justify-content: flex-end;
   align-items: flex-start;
+  position: relative;
 }
 .member_list .wrap {
   overflow: scroll;

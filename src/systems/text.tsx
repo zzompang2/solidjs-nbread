@@ -13,6 +13,7 @@ export const TEXT = {
     button_add: "추가하기",
     button_delete: "삭제",
     back: "처음부터 다시 시작하기",
+    backWarning: "입력한 결제 내역이 모두 지워집니다. 정말 돌아가시겠어요?",
     label1: "결제한 사람",
     label2: "엔빵할 사람들",
     label3: "결제한 금액",
