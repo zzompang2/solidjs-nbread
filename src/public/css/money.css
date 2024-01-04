@@ -93,6 +93,11 @@
   overflow: hidden; /* 넘어간 부분 가리기 */
   text-overflow: ellipsis; /* 말줄임 적용 */
 }
+.payment_list .items .item .row_payer.warning,
+.payment_list .items .item .row_number.warning,
+.payment_list .items .item .row_money.warning {
+  color: #e50000;
+}
 .payment_list .items .item .row_memo,
 .payment_list .items .item .row_names {
   font-size: 12px;

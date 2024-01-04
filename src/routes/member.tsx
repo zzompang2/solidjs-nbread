@@ -4,6 +4,7 @@ import { For, Show, Switch, createSignal } from "solid-js";
 import { memberList } from "~/systems/data";
 import { TEXT } from "~/systems/text";
 import { TabMenu, setTab } from "~/systems/signal";
+import Alert from "~/components/alert";
 
 export default function Member() {
   const [alert, setAlert] = createSignal({ show: false, message: "" });
@@ -93,9 +94,7 @@ export default function Member() {
           </div>
         </form>
       </div>
-      <Show when={alert().show}>
-        <div class="alert">{alert().message}</div>
-      </Show>
+      <Alert trigger={alert().show} message={alert().message} />
     </div>
   );
 }

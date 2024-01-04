@@ -5,6 +5,7 @@ import { memberList, paymentList } from "~/systems/data";
 import { TEXT } from "~/systems/text";
 import { TabMenu, setTab } from "~/systems/signal";
 import PaymentItem from "~/components/paymentItem";
+import Alert from "~/components/alert";
 
 // 두 그룹으로 나뉘는 예시
 // paymentList.add([1, 2, 3], 1, 6000);
@@ -15,6 +16,14 @@ import PaymentItem from "~/components/paymentItem";
 
 export default function Money() {
   const [selectedItem, selectItem] = createSignal(0);
+  const [alert, setAlert] = createSignal(false);
+  let alertTimer: NodeJS.Timeout;
+
+  const popupAlert = () => {
+    setAlert(true);
+    clearTimeout(alertTimer);
+    alertTimer = setTimeout(() => setAlert(false), 2000);
+  };
 
   return (
     <div class="ctn" onclick={() => selectItem(0)}>
@@ -31,7 +40,12 @@ export default function Money() {
           {TEXT.money.back}
         </div>
         <div class="title">{TEXT.money.title}</div>
-        <button onclick={() => setTab(TabMenu.RESULT)}>
+        <button
+          onclick={() => {
+            if (paymentList.isValid()) setTab(TabMenu.RESULT);
+            else popupAlert();
+          }}
+        >
           {TEXT.money.button}
         </button>
       </div>
@@ -82,6 +96,8 @@ export default function Money() {
           </div>
         </div>
       </div>
+
+      <Alert trigger={alert()} message="채워지지 않은 정보가 있습니다." />
     </div>
   );
 }

@@ -118,6 +118,16 @@ class PaymentList extends List<Payment> {
   memo(id: number) {
     return this.list.find((p) => p.id === id)?.memo || "(내용 없음)";
   }
+
+  isValid(): boolean {
+    if (this.count === 0) return false;
+    for (let i = 0; i < this.list.length; i++) {
+      const p = this.list[i];
+      if (p.money <= 0) return false;
+      if (p.members.length === 0) return false;
+    }
+    return true;
+  }
 }
 
 // export datas

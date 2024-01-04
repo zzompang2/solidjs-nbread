@@ -47,7 +47,14 @@ export default function PaymentItem(props: Props) {
             }
           }}
         >
-          <div class="row_number">{props.payment.members.length}명</div>
+          <div
+            class={
+              "row_number" +
+              (props.payment.members.length === 0 ? " warning" : "")
+            }
+          >
+            {props.payment.members.length}명
+          </div>
           <div class="row_names">
             {props.payment.members.length == memberList.list.length
               ? TEXT.paymentItem.allSelected
@@ -69,7 +76,9 @@ export default function PaymentItem(props: Props) {
             }
           }}
         >
-          <div class="row_money">
+          <div
+            class={"row_money" + (props.payment.money === 0 ? " warning" : "")}
+          >
             {String(props.payment.money).replace(
               /(\d)(?=(?:\d{3})+(?!\d))/g,
               "$1,"

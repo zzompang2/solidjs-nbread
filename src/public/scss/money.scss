@@ -87,6 +87,10 @@
         white-space: nowrap; /* 줄넘김 방지 */
         overflow: hidden; /* 넘어간 부분 가리기 */
         text-overflow: ellipsis; /* 말줄임 적용 */
+
+        &.warning {
+          color: $color-warning;
+        }
       }
 
       .row_memo,
