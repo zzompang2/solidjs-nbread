@@ -1,0 +1,61 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "cafe24_title";
+  src: url("../assets/Cafe24SsurroundAir-v1.1.otf");
+}
+@font-face {
+  font-family: "cafe24_body";
+  src: url("../assets/Cafe24OhsquareAir-v2.0.otf");
+}
+* {
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  background-color: #6bc79e;
+}
+
+body,
+input,
+button {
+  font-family: "cafe24_body";
+}
+
+button {
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 700px;
+  padding: 40px;
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    padding: 0;
+  }
+}
+/* input number 화살표 없애기 */
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input:focus {
+  outline: none;
+}
+
+/*# sourceMappingURL=app.css.map */
