@@ -8,9 +8,9 @@ import Result from "./routes/result";
 export default function App() {
   return (
     <Router>
-      <Route path="/" component={Home} />
-      <Route path="/calculation" component={Calculation} />
-      <Route path="/result" component={Result} />
+      {/* <Route path="/" component={Home} /> */}
+      <Route path="/" component={Calculation} />
+      {/* <Route path="/result" component={Result} /> */}
     </Router>
   );
 }
