@@ -1,10 +1,13 @@
 {
+  "homepage": "https://zzompang2.github.io/n-bread2",
   "name": "n-bread2",
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
     "build": "vinxi build",
-    "start": "node ./.output/server/index.mjs"
+    "start": "node ./.output/server/index.mjs",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@solidjs/router": "^0.10.5",
