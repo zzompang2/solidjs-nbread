@@ -7,7 +7,7 @@ import Result from "./routes/result";
 
 export default function App() {
   return (
-    <Router>
+    <Router base="/">
       {/* <Route path="/" component={Home} /> */}
       <Route path="/" component={Calculation} />
       {/* <Route path="/result" component={Result} /> */}

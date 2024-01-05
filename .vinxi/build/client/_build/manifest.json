@@ -144,7 +144,7 @@
       "assets/client-cdf14272.css",
       "assets/member-f83bcbd4.css"
     ],
-    "file": "assets/client-a3a383e1.js",
+    "file": "assets/client-ae1716d7.js",
     "imports": [
       "_web-7251ef64.js",
       "src/routes/calculation.tsx?pick=default&pick=$css",

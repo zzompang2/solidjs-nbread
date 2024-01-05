@@ -354,6 +354,7 @@ function Calculation() {
 }
 function App() {
   return createComponent(Router, {
+    base: "/",
     get children() {
       return createComponent(Route, {
         path: "/",
