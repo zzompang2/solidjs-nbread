@@ -32,7 +32,7 @@
       "_signal-1623ee26.js"
     ]
   },
-  "_result-c3691d83.js": {
+  "_result-c15f5c37.js": {
     "assets": [
       "assets/Cafe24SsurroundAir-v1.1-7049851a.otf",
       "assets/Cafe24OhsquareAir-v2.0-b030aa5e.otf"
@@ -41,16 +41,13 @@
       "assets/result-a1142e61.css",
       "assets/member-ed4f90c2.css"
     ],
-    "file": "assets/result-c3691d83.js",
+    "file": "assets/result-c15f5c37.js",
     "imports": [
       "_signal-1623ee26.js",
       "_alert-2b4bdc3f.js",
       "_paymentItem-c160847c.js",
       "_calculate-3ddee196.js"
     ]
-  },
-  "_routing-3e58b16d.js": {
-    "file": "assets/routing-3e58b16d.js"
   },
   "_signal-1623ee26.js": {
     "file": "assets/signal-1623ee26.js"
@@ -89,7 +86,7 @@
     ],
     "file": "calculation.js",
     "imports": [
-      "_result-c3691d83.js",
+      "_result-c15f5c37.js",
       "_signal-1623ee26.js",
       "_alert-2b4bdc3f.js",
       "_paymentItem-c160847c.js",
@@ -101,9 +98,6 @@
   },
   "src/routes/home.tsx?pick=default&pick=$css": {
     "file": "home.js",
-    "imports": [
-      "_routing-3e58b16d.js"
-    ],
     "isDynamicEntry": true,
     "isEntry": true,
     "src": "src/routes/home.tsx?pick=default&pick=$css"
@@ -169,9 +163,8 @@
     ],
     "file": "ssr.js",
     "imports": [
-      "_result-c3691d83.js",
+      "_result-c15f5c37.js",
       "_signal-1623ee26.js",
-      "_routing-3e58b16d.js",
       "_alert-2b4bdc3f.js",
       "_paymentItem-c160847c.js",
       "_calculate-3ddee196.js"

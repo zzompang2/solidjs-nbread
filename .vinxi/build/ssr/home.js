@@ -1,6 +1,15 @@
 import { ssr, ssrHydrationKey } from "solid-js/web";
-import { u as useNavigate } from "./assets/routing-3e58b16d.js";
-import "solid-js";
+import { createContext, useContext } from "solid-js";
+function invariant(value, message) {
+  if (value == null) {
+    throw new Error(message);
+  }
+  return value;
+}
+const RouterContextObj = createContext();
+createContext();
+const useRouter = () => invariant(useContext(RouterContextObj), "Make sure your app is wrapped in a <Router />");
+const useNavigate = () => useRouter().navigatorFactory();
 const _tmpl$ = ["<main", ">HOME<button>계산하러 가기</button></main>"];
 function Home() {
   useNavigate();

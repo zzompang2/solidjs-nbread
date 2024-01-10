@@ -5,12 +5,20 @@ import { memberList } from "~/systems/data";
 import { TEXT } from "~/systems/text";
 import { TabMenu, setTab } from "~/systems/signal";
 import Alert from "~/components/alert";
+import axios from "axios";
 
 export default function Member() {
   const [alert, setAlert] = createSignal({ show: false, message: "" });
   const [selectedName, selectName] = createSignal(0);
   let inputRef: HTMLInputElement;
   let alertTimer: NodeJS.Timeout;
+
+  axios({
+    method: "get",
+    url: "http://127.0.0.1:8080/database",
+  }).then((res) => {
+    console.log(res.data);
+  });
 
   const popupAlert = (message: string) => {
     setAlert({ show: true, message });

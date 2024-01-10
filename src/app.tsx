@@ -7,10 +7,11 @@ import Result from "./routes/result";
 
 export default function App() {
   return (
-    <Router base="/">
-      {/* <Route path="/" component={Home} /> */}
-      <Route path="/" component={Calculation} />
-      {/* <Route path="/result" component={Result} /> */}
-    </Router>
+    <Calculation />
+    // <Router>
+    // {/* <Route path="/" component={Home} /> */}
+    // {/* <Route path="/" component={Calculation} /> */}
+    // {/* <Route path="/result" component={Result} /> */}
+    // </Router>
   );
 }
