@@ -2,6 +2,7 @@ import { ssr, ssrHydrationKey, escape, createComponent, ssrAttribute } from "sol
 /* empty css                 */import { createSignal, Show, For } from "solid-js";
 import { a as TEXT, m as memberList, p as paymentList } from "./signal-1623ee26.js";
 import { A as Alert } from "./alert-2b4bdc3f.js";
+import axios from "axios";
 import { P as PaymentItem } from "./paymentItem-c160847c.js";
 import { c as calculateNBread, S as SendingItem, P as PayInfoItem } from "./calculate-3ddee196.js";
 const calculation = "";
@@ -12,6 +13,12 @@ function Member() {
     message: ""
   });
   const [selectedName, selectName] = createSignal(0);
+  axios({
+    method: "get",
+    url: "http://127.0.0.1:8080/database"
+  }).then((res) => {
+    console.log(res.data);
+  });
   return ssr(_tmpl$2$1, ssrHydrationKey(), escape(TEXT.member.title), escape(memberList.count) + escape(TEXT.member.button), escape(createComponent(Show, {
     get when() {
       return memberList.count !== 0;
