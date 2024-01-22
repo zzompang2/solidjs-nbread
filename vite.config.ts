@@ -1,12 +1,7 @@
 import { defineConfig } from "@solidjs/start/config";
+import solid from "solid-start/vite";
+import vercel from "solid-start-vercel";
 
 export default defineConfig({
-  start: {
-    server: {
-      preset: "cloudflare_module",
-      rollupConfig: {
-        external: ["__STATIC_CONTENT_MANIFEST", "node:async_hooks"],
-      },
-    },
-  },
+  plugins: [solid({ adapter: vercel() })],
 });
